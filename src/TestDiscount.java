@@ -9,16 +9,19 @@ public class TestDiscount {
 		Budget budget1 = new Budget(
 				new BigDecimal("200"), 6);
 		
-		Budget budget2 = new Budget(
-				new BigDecimal("1000"), 1);
-		
 		DiscountCalculator calculator = new DiscountCalculator();
-		System.out.println(
-				"Discount is: " + calculator.calculate(budget1));
 		
-		System.out.println(
-				"Discount is: " + calculator.calculate(budget2));
-
+		System.out.println("Budget1 value: " + budget1.getValue() );
+		System.out.println("Discount buget 1 is: " + calculator.calculate(budget1));
+		budget1.setValue(budget1.getValue().subtract(calculator.calculate(budget1)));
+		System.out.println("Budget1 value with discount: " + budget1.getValue() );
+		budget1.Approved();
+		budget1.extraDiscount();
+		System.out.println("Situation: " + budget1.getSituation().getClass().getSimpleName());
+		//budget1.Finalize();
+		//System.out.println("Situation: " + budget1.getSituation().getClass().getSimpleName());
+		//budget1.extraDiscount();
+		System.out.println("Value with Extra Discount: " + budget1.getValue());
 	}
 
 }
